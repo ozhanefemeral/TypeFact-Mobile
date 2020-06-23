@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>TypeFact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let a of articles; let i = index" [routerLink]="['/article', a._id]"
+    routerLinkActive="router-link-active">
+
+    <img [src]="a.image" style="height:250px">
+    <ion-card-header>
+      {{a.name}}
+    </ion-card-header>
+  </ion-card>
+</ion-content>

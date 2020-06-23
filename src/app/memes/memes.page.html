@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>TypeFact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select [(ngModel)]="selectedType">
+        <ion-select-option value="Everyone">All Types</ion-select-option>
+        <ion-select-option>ENTP</ion-select-option>
+        <ion-select-option>INTP</ion-select-option>
+        <ion-select-option>INTJ</ion-select-option>
+        <ion-select-option>ENTJ</ion-select-option>
+        <ion-select-option>ENFJ</ion-select-option>
+        <ion-select-option>INFJ</ion-select-option>
+        <ion-select-option>INFP</ion-select-option>
+        <ion-select-option>ENFP</ion-select-option>
+        <ion-select-option>ESFP</ion-select-option>
+        <ion-select-option>ESTP</ion-select-option>
+        <ion-select-option>ISTP</ion-select-option>
+        <ion-select-option>ISFP</ion-select-option>
+        <ion-select-option>ISFJ</ion-select-option>
+        <ion-select-option>ESFJ</ion-select-option>
+        <ion-select-option>ESTJ</ion-select-option>
+        <ion-select-option>ISTJ</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>NSFW?</ion-label>
+      <ion-checkbox [(ngModel)]="nsfw"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)=" getRandomMeme()">Get Meme</ion-button>
+
+  <div *ngIf="meme">
+    <img [src]="meme.image" width="350">
+    <br>
+    <ion-button *ngFor="let reaction of reactions; let i = index" (click)="react(i)" size="large"
+      [fill]="reaction.isReacted ? 'solid' : 'outline'">
+      {{meme.reactions[reaction.value]}} {{reaction.emoji}}
+    </ion-button>
+  </div>
+</ion-content>
